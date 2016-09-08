@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//[ExecuteInEditMode]
+[ExecuteInEditMode]
 public class RoomBlockSpawner : MonoBehaviour {
 
     [SerializeField]
@@ -11,20 +11,20 @@ public class RoomBlockSpawner : MonoBehaviour {
 
         //Blocks are 24x24x34.2
 
-        //Backwall  x = -372,372;     y = -140.5,201.5; z = 967;   variables columnsStart = -372, blocksLeftInRow = 31, rows = 10
-        //Leftwall  x = -385;         y = -140.5,201.5; z = 7,967; variables columnsStart = 7,    blocksLeftInRow = 40, rows = 10
-        //Rightwall x = 385;          y = -140.5,201.5; z = 7,967; variables columnsStart = 7,    blocksLeftInRow = 40, rows = 10
-        //Roof      x = -376.2,376.2; y = 227;          z = 7,967; variables columnsStart = 7,    blocksLeftInRow = 40, rows = 10
-        //Floor     x = -376.2,376.2; y = -169;         z = 7,967; variables columnsStart = 7,    blocksLeftInRow = 40, rows = 10
+        //Backwall  x = -372,372;     y = -140.5,201.5; z = 967;     variables columnsStart = -372, blocksLeftInRow = 31, rows = 8
+        //Leftwall  x = -381;         y = -140.5,201.5; z = 7,967;   variables columnsStart = 7,    blocksLeftInRow = 40, rows = 8
+        //Rightwall x = 356.5;        y = -140.5,201.5; z = 7,967;   variables columnsStart = 7,    blocksLeftInRow = 40, rows = 8
+        //Roof      x = -376.2,376.2; y = 227.5;          z = 7,967; variables columnsStart = 7,    blocksLeftInRow = 40, rows = 18
+        //Floor     x = -376.2,376.2; y = -168.5;         z = 7,967; variables columnsStart = 7,    blocksLeftInRow = 40, rows = 18
 
         float maxAllowableBlocks = 7;
 
-        float side = 24, height = 34.2f;
-        float[] minRow = new float[] { -372, 7, 7, 7, 7 };
-        float[] maxRow = new float[] { 372, 967, 967, 967, 967 };
+        float side = 32, height = 41;
+        float[] minRow = new float[] { -365, 7, 7, 7, 7 };
+        float[] maxRow = new float[] { 365, 967, 967, 967, 967 };
         float[] bottom = new float[] { -140.5f, -140.5f, -140.5f, -376.2f, -376.2f };
         float[] top = new float[] { 201.5f, 201.5f, 201.5f, 376.2f, 376.2f };
-        float[] wall = new float[] { 967, -385, 385, 227, -169 };
+        float[] wall = new float[] { 967, -368.5f, 368.5f, 227.5f, -168.5f };
         int[] xRot = new int[] { 0, 0, 0, 270, 270 };
         int[] yRot = new int[] { 0, 90, 270, 90, 90 };
         Vector3[] pos = new Vector3[5];

@@ -3,6 +3,16 @@ using System.Collections;
 
 public class BlockHierarchy : BlockContainer {
 
+    /* Processing Order
+    Awake
+    Start
+    Update
+    LateUpdate
+    OnMouseDown
+    OnMouseDrag
+    OnMouseUp
+    */
+
     bool startMouseDrag = true;
     Transform stackObject;
     Transform stackParent, parent;
@@ -41,7 +51,6 @@ public class BlockHierarchy : BlockContainer {
                 if (snap[i].CheckForStack())
                 {
                     stackObject.GetComponent<StackBlock>().AbductChildren(snap[i].CheckForStack());
-                    break;
                 }
             }
             startMouseDrag = false;
@@ -58,12 +67,13 @@ public class BlockHierarchy : BlockContainer {
         base.OnMouseUp();
         stackObject.parent = stackParent;
         stackObject.transform.position = Vector3.zero;
-        startMouseDrag = true;
         transform.position = new Vector3(GetMyCenter(), snap[0].transform.position.y, snap[0].transform.position.z);
         for(int i = 0; i < snap.Length; i++)
         {
             snap[i].transform.localPosition = new Vector3(snap[i].GetXPositionInParent(), 0, 0);
-        }  
+        }
+        transform.parent = parent;
+        startMouseDrag = true;
     }
 
     public void SetStackObject(Transform stack)
@@ -87,7 +97,7 @@ public class BlockHierarchy : BlockContainer {
             {
                 xValMin = snap[row].transform.position.x;
                 xValMax = snap[row - 1].transform.position.x;
-                roundedToHundreths = Mathf.Round((((xValMax - xValMin) / 2) + xValMax) * 100) / 100;
+                roundedToHundreths = Mathf.Round((((xValMax - xValMin) / 2) + xValMin) * 10) / 10;
             }
             else
             {

@@ -5,9 +5,10 @@ public class StackBlock : MonoBehaviour {
 
 	public void ReleaseChildren()
     {
-        foreach(Transform child in transform)
+        Block[] children = GetComponentsInChildren<BlockHierarchy>();
+        for(int i = 0; i < children.Length; i++)
         {
-            child.parent = null;
+            children[i].transform.parent = transform.parent;
         }
     }
 

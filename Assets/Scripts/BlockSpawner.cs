@@ -34,7 +34,7 @@ public class BlockSpawner : MonoBehaviour {
     {
         blockColor = colorPicker.GetBlockColor();
         newBlock = (GameObject)Instantiate(blocks[blockIndex], transform.position, Quaternion.identity);
-        //newBlock.transform.parent = transform;
+        newBlock.transform.parent = transform;
         block = newBlock.GetComponent<Block>() as BlockHierarchy;
         block.SetColor(blockColor, SetMaterial(blockColor));
         block.SetStackObject(stackBlock);

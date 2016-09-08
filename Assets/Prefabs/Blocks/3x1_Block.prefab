@@ -131,6 +131,7 @@ GameObject:
   - 65: {fileID: 6539634}
   - 65: {fileID: 6503700}
   - 65: {fileID: 6545290}
+  - 114: {fileID: 11467998}
   m_Layer: 5
   m_Name: Colliders_Block
   m_TagString: Block
@@ -199,6 +200,7 @@ GameObject:
   - 65: {fileID: 6577494}
   - 65: {fileID: 6538484}
   - 65: {fileID: 6564888}
+  - 114: {fileID: 11425518}
   m_Layer: 5
   m_Name: Colliders_Block
   m_TagString: Block
@@ -266,6 +268,7 @@ GameObject:
   - 65: {fileID: 6577608}
   - 65: {fileID: 6567430}
   - 65: {fileID: 6531542}
+  - 114: {fileID: 11446634}
   m_Layer: 5
   m_Name: Colliders_Block
   m_TagString: Block
@@ -1081,6 +1084,17 @@ MonoBehaviour:
   snapTarget: {fileID: 6541606}
   snapImagePosition: {x: 0, y: 0, z: 0}
   snapImage: {fileID: 418476}
+--- !u!114 &11425518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b015785c2405a745b1e657b0de8f3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11430150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1095,6 +1109,17 @@ MonoBehaviour:
   snapTarget: {fileID: 6593076}
   snapImagePosition: {x: 0, y: 0, z: 0}
   snapImage: {fileID: 458292}
+--- !u!114 &11446634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b015785c2405a745b1e657b0de8f3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11464118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1109,6 +1134,17 @@ MonoBehaviour:
   snapTarget: {fileID: 6505462}
   snapImagePosition: {x: 0, y: 0, z: 0}
   snapImage: {fileID: 406902}
+--- !u!114 &11467998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b015785c2405a745b1e657b0de8f3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

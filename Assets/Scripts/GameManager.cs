@@ -23,6 +23,14 @@ public class GameManager : MonoBehaviour {
         cam = Camera.main;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            UnityEditor.EditorApplication.isPaused = true;
+        }
+    }
+
     public void ExitGame()
     {
 #if !UNITY_EDITOR

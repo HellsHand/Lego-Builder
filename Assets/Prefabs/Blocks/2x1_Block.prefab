@@ -14,6 +14,7 @@ GameObject:
   - 65: {fileID: 6506312}
   - 65: {fileID: 6539886}
   - 65: {fileID: 6508748}
+  - 114: {fileID: 11467064}
   m_Layer: 5
   m_Name: Colliders_Block
   m_TagString: Block
@@ -131,6 +132,7 @@ GameObject:
   - 65: {fileID: 6584094}
   - 65: {fileID: 6543072}
   - 65: {fileID: 6513670}
+  - 114: {fileID: 11492956}
   m_Layer: 5
   m_Name: Colliders_Block
   m_TagString: Block
@@ -731,6 +733,17 @@ MonoBehaviour:
   stopVelocity: 0.005
   recycling: {fileID: 11424476, guid: d6712bc01fa118343a1ca0078d3485c1, type: 2}
   dragBlock: {fileID: 133390, guid: d789be78eab2b1f44ace143f103f8e1c, type: 2}
+--- !u!114 &11467064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b015785c2405a745b1e657b0de8f3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11475432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -759,6 +772,17 @@ MonoBehaviour:
   snapTarget: {fileID: 6532928}
   snapImagePosition: {x: 0, y: 0, z: 0}
   snapImage: {fileID: 412786}
+--- !u!114 &11492956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b015785c2405a745b1e657b0de8f3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -13,7 +13,7 @@ public class BlockContainer : Block {
     protected SnapToBlock[] snap;
     Rigidbody rb;
     WaitForSeconds waitDelay = new WaitForSeconds(1.0f);
-    float positionY, cameraOffset;
+    float positionY, cameraOffset, zPosition;
     Vector3 highestBlockPosition, mouseHitPosition;
     GameObject testDummy;
 
@@ -32,24 +32,19 @@ public class BlockContainer : Block {
 
     void OnMouseDown()
     {
+        zPosition = transform.position.z;
         RaycastHit hit;
         if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
             mouseHitPosition = hit.point;
             testDummy = new GameObject();
-            testDummy.transform.position = new Vector3(mouseHitPosition.x, mouseHitPosition.y, 0);
+            testDummy.transform.position = new Vector3(mouseHitPosition.x, mouseHitPosition.y, zPosition);
             transform.parent = testDummy.transform;
         }
     }
 
     public void OnMouseDrag()
     {
-        //this for loop resets the child blocks back to there place in the parent
-        for (int i = 0; i < snap.Length; i++)
-        {
-            snap[i].transform.localPosition = snap[i].GetPositionInParent();
-        }
-
         if (canDrag)
         {
             float x = Input.mousePosition.x;
@@ -73,7 +68,7 @@ public class BlockContainer : Block {
                 {
                     if (snap[i].snapImage.transform.position.y != positionY)
                     {
-                        Vector3 snapToHighestPosition = new Vector3(snap[i].snapImage.transform.position.x, positionY, snap[i].snapImage.transform.position.z);
+                        Vector3 snapToHighestPosition = new Vector3(snap[i].snapImage.transform.position.x, positionY, zPosition);
                         snap[i].snapImage.transform.position = snapToHighestPosition;
                     }
                 }
