@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
+/***********************************************************************************************************************\
+ * 
+\***********************************************************************************************************************/
+
 //drag handlers are a part of UnityEngine.Systems
 public class Thumbstick : MonoBehaviour, IDragHandler, IEndDragHandler
 {
@@ -18,6 +22,7 @@ public class Thumbstick : MonoBehaviour, IDragHandler, IEndDragHandler
         rect = GetComponent<RectTransform>();
     }
 
+    //virtual means this script will not run its method only scripts that override in children scripts
     //method must be virtual in order to override it from another script that inherits from this one
     public virtual void OnDrag(PointerEventData data)
     {

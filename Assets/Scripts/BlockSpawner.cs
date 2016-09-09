@@ -2,10 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class BlockSpawner : MonoBehaviour {
+/***********************************************************************************************************************\
+ * 
+\***********************************************************************************************************************/
+
+public class BlockSpawner : BlockBuilder {
 
     [SerializeField]
-    float growthRate = .01f;
+    float growthRate = .05f;
     [SerializeField]
     GameObject[] blocks = new GameObject[2];
     [SerializeField]
@@ -20,14 +24,51 @@ public class BlockSpawner : MonoBehaviour {
     BlockHierarchy block;
     Color blockColor;
     Transform stackBlock;
-    int count = 0;
+    int count = 0, howMany = 0;
 
-    public void Awake()
+    void Awake()
     {
         solid = GetComponent<MeshRenderer>().materials[0];
         transparent = GetComponent<MeshRenderer>().materials[1];
         transparent.SetFloat("_Mode", 3.0f);
         stackBlock = GetComponentInChildren<StackBlock>().transform;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            howMany = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            howMany = 2;
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            howMany = 3;
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            howMany = 4;
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            howMany = 5;
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad6))
+        {
+            howMany = 6;
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            newBlock = BuildBlock(howMany);
+            newBlock.transform.parent = transform;
+            block = newBlock.GetComponent<Block>() as BlockHierarchy;
+            block.SetStackObject(stackBlock);
+            block.InitializeBuild();
+        }
     }
 
     public void CreateNewBlock()

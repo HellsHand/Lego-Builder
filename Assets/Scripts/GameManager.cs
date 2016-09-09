@@ -2,13 +2,21 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+/***********************************************************************************************************************\
+ * 
+\***********************************************************************************************************************/
+
 public class GameManager : MonoBehaviour {
 
     public static GameManager Instance;
 
     [SerializeField]
-    Canvas hud, menu, move;
-    
+    Canvas hud;
+    [SerializeField]
+    Canvas menu;
+    [SerializeField]
+    Canvas move;
+
     //hideininspector keeps public values from being tampered with in the inspector by hiding them
     [HideInInspector]
     public bool canvasSwitch = false;

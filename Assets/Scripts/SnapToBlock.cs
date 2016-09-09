@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
+
+/***********************************************************************************************************************\
+ * 
+\***********************************************************************************************************************/
 
 public class SnapToBlock : Block {
 
@@ -20,24 +23,17 @@ public class SnapToBlock : Block {
 
     public Transform snapImage;
 
-    bool isGround = false;
     float range = 25, xPosInParent;
     int offset = 0;
     Vector3 hitPosition;
     Vector3[] snapImageOffset = new Vector3[2];
-    
-    new public void Awake()
+
+    public void OnBuild()
     {
         xPosInParent = transform.localPosition.x;
-        base.Awake();
-    }
-
-    void Start()
-    {
         snapImagePosition = snapImage.transform.position;
         snapImageOffset[0] = new Vector3(0, 2.5f, 0);
         snapImageOffset[1] = new Vector3(0, 1.0f, 0);
-        isGround = (blockCollider.tag == "Ground") ? true : false;
     }
 
     public void OnMouseDrag()
@@ -49,24 +45,17 @@ public class SnapToBlock : Block {
             if (Physics.Raycast(ray, out hit, range))
             {
                 hitPosition = hit.collider.transform.position;
-                if (!isGround)
+                Block blockHit = hit.collider.transform.parent.parent.GetComponent<SnapToBlock>();
+                
+                if (blockHit.GetHeight() == 1.0f)
                 {
-                    if (hit.collider.transform.parent.parent.GetComponent<SnapToBlock>().height == 1.0f)
-                    {
-                        offset = 0;
-                    }
-                    else if (hit.collider.transform.parent.parent.GetComponent<SnapToBlock>().height == 0.5f)
-                    {
-                        offset = 1;
-                    }
+                    offset = 0;
                 }
-                else
+                else if (blockHit.GetHeight() == 0.5f)
                 {
-                    if (hit.collider.transform.parent.parent.GetComponent<SnapToBlock>().height == 0.5f)
-                    {
-                        offset = 1;
-                    }
+                    offset = 1;
                 }
+                
                 snapImage.position = hitPosition + snapImageOffset[offset];
                 snapImage.gameObject.SetActive(true);
             }

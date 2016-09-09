@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/***********************************************************************************************************************\
+ * 
+\***********************************************************************************************************************/
+
 public class BlockContainer : Block {
 
     [SerializeField]
@@ -16,18 +20,31 @@ public class BlockContainer : Block {
     float positionY, cameraOffset, zPosition;
     Vector3 highestBlockPosition, mouseHitPosition;
     GameObject testDummy;
-
-    new public void Awake()
-    {
-        base.Awake();
-        snap = GetComponentsInChildren<SnapToBlock>();
-    }
+    bool changeYPosToZPos = false;
 
     public void Start()
     {
+        StartCoroutine(RemoveEffectsOfGravity());
+    }
+
+    public void OnBuild()
+    {
         rb = GetComponent<Rigidbody>();
         cameraOffset = Camera.main.transform.position.z;
-        StartCoroutine(RemoveEffectsOfGravity());
+        snap = GetComponentsInChildren<SnapToBlock>();
+    }
+
+    new public void Update()
+    {
+        base.Update();
+        if(Input.GetKey(KeyCode.LeftControl))
+        {
+            changeYPosToZPos = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            changeYPosToZPos = false;
+        }
     }
 
     void OnMouseDown()
@@ -49,7 +66,15 @@ public class BlockContainer : Block {
         {
             float x = Input.mousePosition.x;
             float y = Input.mousePosition.y;
-            Vector3 mouseLoc = Camera.main.ScreenToWorldPoint(new Vector3(x, y, transform.position.z - cameraOffset));
+            Vector3 mouseLoc;
+            if (changeYPosToZPos)
+            {
+                mouseLoc = Camera.main.ScreenToWorldPoint(new Vector3(x, transform.position.y, y));
+            }
+            else
+            {
+                mouseLoc = Camera.main.ScreenToWorldPoint(new Vector3(x, y, transform.position.z - cameraOffset));
+            }
             testDummy.transform.position = mouseLoc;
 
             if (transform.position.y < 15)

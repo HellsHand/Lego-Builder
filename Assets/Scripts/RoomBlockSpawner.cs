@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
-using System.Collections;
+
+/***********************************************************************************************************************\
+ * 
+\***********************************************************************************************************************/
 
 [ExecuteInEditMode]
 public class RoomBlockSpawner : MonoBehaviour {
 
     [SerializeField]
-    GameObject[] blocks, sides;
+    GameObject[] blocks;
+    [SerializeField]
+    GameObject[] sides;
 
     void Start() {
 

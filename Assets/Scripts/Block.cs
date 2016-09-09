@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/***********************************************************************************************************************\
+ * 
+\***********************************************************************************************************************/
+
 public class Block : MonoBehaviour, IBlock {
 
     protected int rows, columns;
@@ -7,6 +11,18 @@ public class Block : MonoBehaviour, IBlock {
     protected Transform blockCollider;
     protected bool canDrag = true, isMoving = false;
     protected Vector3 positionInParent;
+
+    public void InitializeBuild()
+    {
+        //SetPositionInParent();
+        //blockCollider = transform.GetChild(0).GetChild(0);
+        GetComponent<BlockContainer>().OnBuild();
+        SnapToBlock[] childBlocks = GetComponentsInChildren<SnapToBlock>();
+        for(int i = 0; i < childBlocks.Length; i++)
+        {
+            childBlocks[i].OnBuild();
+        }
+    }
 
     public void Awake()
     {
@@ -25,6 +41,12 @@ public class Block : MonoBehaviour, IBlock {
             canDrag = !GameManager.Instance.canvasSwitch;
         }
     }
+
+    public Transform GetBlockCollider()
+    {
+        return blockCollider;
+    }
+
     public int GetRows()
     {
         float width = transform.localScale.x;

@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
+/***********************************************************************************************************************\
+ * 
+\***********************************************************************************************************************/
+
 public class Recycling : MonoBehaviour, IPointerUpHandler, IPointerDownHandler {
 
     GameObject recycleBlock;
