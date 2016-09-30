@@ -22,7 +22,7 @@ public class BlockHierarchy : BlockContainer {  //inherits from the BlockContain
     Transform stackObject;
 
     //stackParent is the stackObjects original parent, parent is this transforms original parent
-    Transform stackParent, parent;
+    Transform stackParent; //, parent; now inherits from BlockContainer 
 
     //float x, y, z;
 

@@ -31,6 +31,7 @@ public class SnapToBlock : Block {
     public void OnBuild()
     {
         xPosInParent = transform.localPosition.x;
+        blockCollider = transform.GetChild(0).GetChild(0);
         snapImagePosition = snapImage.transform.position;
         snapImageOffset[0] = new Vector3(0, 2.5f, 0);
         snapImageOffset[1] = new Vector3(0, 1.0f, 0);
@@ -108,6 +109,11 @@ public class SnapToBlock : Block {
     public float GetXPositionInParent()
     {
         return xPosInParent;
+    }
+
+    public Transform GetBlockCollider()
+    {
+        return blockCollider;
     }
     
     /*

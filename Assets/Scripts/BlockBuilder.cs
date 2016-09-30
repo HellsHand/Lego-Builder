@@ -42,6 +42,10 @@ public class BlockBuilder : MonoBehaviour {
                     {
                         pos.x = (0 - (length + 1) * 0.8f) + (k + 1) * 1.6f;
                     }
+                    else
+                    {
+                        pos.x = (0 - ((length * 0.8f) + 0.8f)) + (k + 1) * 1.6f;
+                    }
                     children[count].transform.position = pos;
                     children[count].transform.parent = newContainer.transform;
                     children[count].SetActive(true);

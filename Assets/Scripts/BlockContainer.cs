@@ -12,9 +12,11 @@ public class BlockContainer : Block {
     [SerializeField]
     Recycling recycling;
     [SerializeField]
-    GameObject dragBlock;
+    GameObject grabBlock;
 
     protected SnapToBlock[] snap;
+    protected Transform parent;
+
     Rigidbody rb;
     WaitForSeconds waitDelay = new WaitForSeconds(1.0f);
     float positionY, cameraOffset, zPosition;
@@ -31,6 +33,7 @@ public class BlockContainer : Block {
     {
         rb = GetComponent<Rigidbody>();
         cameraOffset = Camera.main.transform.position.z;
+        parent = transform.parent;
         snap = GetComponentsInChildren<SnapToBlock>();
     }
 
@@ -54,9 +57,10 @@ public class BlockContainer : Block {
         if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
             mouseHitPosition = hit.point;
-            testDummy = new GameObject();
-            testDummy.transform.position = new Vector3(mouseHitPosition.x, mouseHitPosition.y, zPosition);
-            transform.parent = testDummy.transform;
+            //testDummy =  new GameObject();
+            grabBlock.transform.position = new Vector3(mouseHitPosition.x, mouseHitPosition.y, zPosition);
+            grabBlock.transform.parent = transform.parent;
+            transform.parent = grabBlock.transform;
         }
     }
 
@@ -75,7 +79,7 @@ public class BlockContainer : Block {
             {
                 mouseLoc = Camera.main.ScreenToWorldPoint(new Vector3(x, y, transform.position.z - cameraOffset));
             }
-            testDummy.transform.position = mouseLoc;
+            grabBlock.transform.position = mouseLoc;
 
             if (transform.position.y < 15)
             {
@@ -128,12 +132,14 @@ public class BlockContainer : Block {
             rb.useGravity = false;
             rb.isKinematic = true;
         }
-        if(testDummy.transform == transform.parent) {
-            testDummy.transform.position = transform.position;
+        //grabBlock.transform = transform.parent from dragging
+        if(grabBlock.transform == transform.parent) {
+            grabBlock.transform.position = transform.position;
             transform.localPosition = Vector3.zero;
-            transform.parent = null;
+            transform.parent = parent;
         }
-        Destroy(testDummy);
+        grabBlock.transform.parent = transform;
+        grabBlock.transform.localPosition = Vector3.zero;
     }
 
     IEnumerator RemoveEffectsOfGravity()

@@ -35,7 +35,10 @@ public class GameManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
+            //UnityEditor does not compile when building applications
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPaused = true;
+#endif 
         }
     }
 

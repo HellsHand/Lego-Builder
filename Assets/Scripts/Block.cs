@@ -29,9 +29,9 @@ public class Block : MonoBehaviour, IBlock {
         rows = GetRows();
         columns = GetColumns();
         height = GetHeight();
-        SetPositionInParent();
+        //SetPositionInParent();
 
-        blockCollider = transform.GetChild(0).GetChild(0);
+        //blockCollider = transform.GetChild(0).GetChild(0);
     }
 
     public void Update()
@@ -40,11 +40,6 @@ public class Block : MonoBehaviour, IBlock {
         {
             canDrag = !GameManager.Instance.canvasSwitch;
         }
-    }
-
-    public Transform GetBlockCollider()
-    {
-        return blockCollider;
     }
 
     public int GetRows()
@@ -69,12 +64,14 @@ public class Block : MonoBehaviour, IBlock {
             render.material.color = color;
         }
     }
-    public void SetPositionInParent()
+
+    //called by this Awake() method setting positionInParent to this transforms localPosition upon creation
+    /*public void SetPositionInParent()
     {
         positionInParent = transform.localPosition;
     }
-    public Vector3 GetPositionInParent()
+    /*public Vector3 GetPositionInParent()
     {
         return positionInParent;
-    }
+    }*/
 }
